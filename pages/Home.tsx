@@ -1,52 +1,45 @@
 import { Link } from 'react-router-dom'
 
-export default function Home() {
-  const days = [
-    { day: 'Lundi', details: 'Chest/Biceps/Shoulders', id: 1 },
-    { day: 'Mardi', details: 'Back/Triceps', id: 2 },
-    { day: 'Mercredi', details: 'Legs/Abs', id: 3 },
-    { day: 'Jeudi', details: 'Repos', id: 4 },
-    { day: 'Vendredi', details: 'Chest/Biceps/Shoulders', id: 5 },
-    { day: 'Samedi', details: 'Back/Triceps', id: 6 },
-    { day: 'Dimanche', details: 'Repos', id: 7 },
-  ]
+const days = [
+  { day: 'Lundi', details: 'Chest/Biceps/Shoulders', id: 1 },
+  { day: 'Mardi', details: 'Back/Triceps', id: 2 },
+  { day: 'Mercredi', details: 'Legs/Abs', id: 3 },
+  { day: 'Jeudi', details: 'Repos', id: 4 },
+  { day: 'Vendredi', details: 'Chest/Biceps/Shoulders', id: 5 },
+  { day: 'Samedi', details: 'Back/Triceps', id: 6 },
+  { day: 'Dimanche', details: 'Repos', id: 7 },
+]
 
+export default function Home() {
   return (
-    <div className="main-content">
-      {/* Barre de navigation haute */}
-      <nav className="top-nav flex justify-between items-center mb-4">
-        <Link to="/" className="font-bold text-lg nav-btn">📅Planning</Link>
-        <Link to="/history" className="nav-btn">📈 Historique</Link>
-        <Link to="/workout/new" className="nav-btn bg-blue-500 text-white px-3 py-1 rounded">+ Créer</Link>
+    <div className="max-w-md mx-auto px-4 py-6 min-h-screen bg-gray-50">
+      <nav className="flex justify-between items-center mb-8">
+        <h1 className="font-extrabold text-3xl">📅 Planning</h1>
+        <Link
+          to="/workout/new/add-exercise"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+        >
+          + Créer séance
+        </Link>
       </nav>
 
-      {/* Planning de la semaine */}
-      <section className="workout-list">
-        {days.map(({ day, details, id }) => (
-          <div key={day} className="workout-card">
-            <div className="flex justify-between items-start w-full">
-              <span className="text-lg font-semibold">{day}</span>
-
-              <div className="flex flex-col items-end text-right ml-auto">
-                <Link
-                  to={`/workout/${id}`}
-                  className="text-xs text-blue-500 font-semibold mb-1"
-                >
-                  Voir
-                </Link>
-                <Link
-                  to={`/workout/${id}/edit`}
-                  className="text-xs text-gray-500 hover:text-blue-500"
-                >
-                  Modifier
-                </Link>
-              </div>
-            </div>
-
-            <div className="workout-details">{details}</div>
+      {days.map(({ day, details, id }) => (
+        <div
+          key={id}
+          className="mb-6 bg-white rounded-2xl shadow p-5 flex justify-between items-center"
+        >
+          <div>
+            <h2 className="font-semibold text-lg">{day}</h2>
+            <p className="text-gray-600 text-sm">{details}</p>
           </div>
-        ))}
-      </section>
+          <Link
+            to={`/workout/${id}`}
+            className="text-blue-600 font-semibold hover:underline"
+          >
+            Voir
+          </Link>
+        </div>
+      ))}
     </div>
   )
 }
