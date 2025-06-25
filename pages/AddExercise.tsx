@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { EXERCISES, ALL_MUSCLES } from '../components/data'
+import { EXERCISES, ALL_MUSCLES } from '../components/Data'
 
 export default function AddExercise() {
   const navigate = useNavigate()

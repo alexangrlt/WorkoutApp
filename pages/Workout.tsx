@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
-import { EXERCISES } from '../components/data'
+import { EXERCISES } from '../components/Data'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 type Set = {
